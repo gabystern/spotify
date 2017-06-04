@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Spotify Artist API</title>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h2>Spotify Artist Searcher</h2>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div id="artist-name" class="text-center"><h2></h2></div>
+      </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>Search for an Artist</h3>
+      <div class="form-group">
+      <form id="artist-search">
+        <input id='query' type='text' class="form-control"/>
+        <input type='submit' />
+      </form>
+    </div>
+    </div>
+    <div class="col-sm-5">
+      <div id="artist-name" class="text-center"><h2></h2></div>
+      <div id="album-covers"><h3> Album Covers </h3></div>
+      <div id="albums"></div>
+    </div>
+    <div class="col-sm-4">
+      <h3> Artist Info </h3>
+      <div id="songs-title" style="font-size:20px" class="font-weight-bold"><h3></h3></div>
+      <ul id ="top-songs" style="font-size:15px" ></ul>
+      <div id="genres-title" style="font-size:20px" class="font-weight-bold"><h3></h3></div>
+      <ul id ="genres" style="font-size:15px"></ul>
+    </div>
+  </div>
+</div>
+  <script type="text/javascript" src='index.js'></script>
+  </body>
+</html>
