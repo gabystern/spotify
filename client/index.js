@@ -1,6 +1,22 @@
 $(document).ready(function() {
     console.log( "ready!" );
 
+    $.ajax({
+        method: "POST",
+        url: "https://accounts.spotify.com/api/token",
+        contentType: 'application/json',
+        dataType: 'json',
+        data: {
+          grant_type: "client_credentials"
+        },
+        headers: {
+          authorization: "Basic 2bdb493717ad4a2398cb48f7856ab585: b01f1e3f0b054a0e8ef6ffa0af7f5813"
+        },
+        success: function(result) {
+          console.log(results)
+        },
+      });
+
     $('form#artist-search').on('submit', function(event){
       event.preventDefault()
       console.log("Submitted Form!")
@@ -10,7 +26,7 @@ $(document).ready(function() {
       $.ajax({
         url: url,
         headers: {
-          "Authorization": "Bearer " + "2994250bb6b14cc8945209cb5b12d46a"
+          "Authorization": "Bearer " + "b01f1e3f0b054a0e8ef6ffa0af7f5813"
         },
         success: function(data){
           let artistId = data.artists.items[0].id
@@ -61,12 +77,16 @@ function getAlbumCovers(data){
   $('#artist-name').html(`${spotifyUrl}`)
 }
 
+// spotify_token = RestClient.post("https://accounts.spotify.com/api/token",{"grant_type": "client_credentials"}, {"Authorization": "Basic 2994250bb6b14cc8945209cb5b12d46a"})
+//
+// parsed_token = JSON.parse(spotify_token)
+
 function getArtistInfo(artistId){
   var url = `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=US`
   $.ajax({
     url: url,
     headers: {
-      "Authorization": "Bearer " + "2994250bb6b14cc8945209cb5b12d46a"
+      "Authorization": "Bearer " + "b01f1e3f0b054a0e8ef6ffa0af7f5813"
     },
     success: function(data){
       let tracks = data.tracks.map(function(track){

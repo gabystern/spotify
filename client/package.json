@@ -1,0 +1,26 @@
+{
+  "name": "spotify-api-practice",
+  "version": "1.0.0",
+  "description": "Search artists",
+  "main": "index.js",
+  "dependencies": {
+    "machinepack-spotify": "^0.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabystern/spotify.git"
+  },
+  "keywords": [
+    "spotify"
+  ],
+  "author": "gaby stern",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabystern/spotify/issues"
+  },
+  "homepage": "https://github.com/gabystern/spotify#readme"
+}
