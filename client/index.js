@@ -1,42 +1,46 @@
 $(document).ready(function() {
     console.log( "ready!" );
-
-    $.ajax({
-        method: "POST",
-        url: "https://accounts.spotify.com/api/token",
-        contentType: 'application/json',
-        dataType: 'json',
-        data: {
-          grant_type: "client_credentials"
-        },
-        headers: {
-          authorization: "Basic 2bdb493717ad4a2398cb48f7856ab585: b01f1e3f0b054a0e8ef6ffa0af7f5813"
-        },
-        success: function(result) {
-          console.log(results)
-        },
-      });
-
-    $('form#artist-search').on('submit', function(event){
-      event.preventDefault()
-      console.log("Submitted Form!")
-      const query = $("#query").val()
-      var url = `https://api.spotify.com/v1/search?q=${query}&type=artist`
-      $('#query').val()
-      $.ajax({
-        url: url,
-        headers: {
-          "Authorization": "Bearer " + "b01f1e3f0b054a0e8ef6ffa0af7f5813"
-        },
-        success: function(data){
-          let artistId = data.artists.items[0].id
-          getGenres(data)
-          getAlbumCovers(data)
-          getArtistInfo(artistId)
-        }
-      })
-    })
+    tokenValidation()
+    artistSearch()
 });
+
+function tokenValidation(){
+  $.ajax({
+      method: "POST",
+      url: "https://accounts.spotify.com/api/token",
+      data: {
+        grant_type: "client_credentials"
+      },
+      headers: {
+        authorization: "Basic 2bdb493717ad4a2398cb48f7856ab585: b01f1e3f0b054a0e8ef6ffa0af7f5813"
+      },
+      success: function(result) {
+        console.log(results)
+      },
+  });
+}
+
+function artistSearch(){
+  $('form#artist-search').on('submit', function(event){
+    event.preventDefault()
+    console.log("Submitted Form!")
+    const query = $("#query").val()
+    var url = `https://api.spotify.com/v1/search?q=${query}&type=artist`
+    $('#query').val()
+    $.ajax({
+      url: url,
+      headers: {
+        "Authorization": "Bearer " + "b01f1e3f0b054a0e8ef6ffa0af7f5813"
+      },
+      success: function(data){
+        let artistId = data.artists.items[0].id
+        getGenres(data)
+        getAlbumCovers(data)
+        getArtistInfo(artistId)
+      }
+    })
+  })
+}
 
 
 function getGenres(data){
